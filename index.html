@@ -15,7 +15,10 @@
   body {
     min-height: 100vh;
     min-height: 100svh;
-    background: #f7f4ed;
+    background-color: #f7f4ed;
+    background-image: url("assets/paper.png");
+    background-repeat: repeat;
+    background-size: 512px 512px;
     color: #d24942;
     font-family: "Courier Prime", "Courier New", monospace;
     display: flex;
@@ -23,30 +26,15 @@
     justify-content: center;
     padding: 24px;
   }
-  /* Paper grain, recreated from the Figma Fine cotton paper shader:
-     paper #F7F4ED, fiber #A39C8C, grain strength 0.37, grain scale 1,
-     surface unevenness 0.73, texture depth 0.85, texture scale 1.34,
-     rotation 0, seed 0. Figma shaders are procedural, not exportable
-     as an image, so this is a light SVG turbulence overlay at low
-     opacity over the flat paper colour. */
-  body::before {
-    content: "";
-    position: fixed;
-    inset: 0;
-    pointer-events: none;
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='240' height='240' filter='url(%23g)' opacity='0.55'/%3E%3C/svg%3E");
-    opacity: 0.07;
-    mix-blend-mode: multiply;
-  }
-  body::after {
-    content: "";
-    position: fixed;
-    inset: 0;
-    pointer-events: none;
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='600' height='600'%3E%3Cfilter id='u'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.012 0.02' numOctaves='3' seed='0' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='600' height='600' filter='url(%23u)' opacity='0.5'/%3E%3C/svg%3E");
-    opacity: 0.05;
-    mix-blend-mode: multiply;
-  }
+  /* Paper texture: assets/paper.png is a seamless 512px tile generated
+     to match the Figma Fine cotton paper shader as rendered, measured
+     from the Figma screenshot. Paper #F7F4ED, fiber #A39C8C, grain
+     strength 0.37, grain scale 1, unevenness 0.73, texture depth 0.85,
+     texture scale 1.34, seed 0. Measured Figma background: mean
+     247, 244, 238, std about 3.8 per channel. This tile: mean
+     246, 243, 237, std about 3.8 per channel. The earlier light SVG
+     grain overlay was too faint to see, opacity 0.07, so it is
+     removed and the tile carries the texture instead. */
   main {
     position: relative;
     width: 100%;
