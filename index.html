@@ -74,10 +74,26 @@
     aspect-ratio: 4 / 3;
     object-fit: cover;
   }
+  .cta {
+    display: inline-block;
+    background: #d24942;
+    color: #fff;
+    font-family: "Courier Prime", "Courier New", monospace;
+    font-size: 20px;
+    line-height: 24px;
+    letter-spacing: -0.56px;
+    text-decoration: none;
+    padding: 16px 28px;
+    border-radius: 999px;
+    text-transform: none;
+  }
+  .cta:hover { opacity: 0.9; }
+  .cta:focus-visible { outline: 2px solid #d24942; outline-offset: 3px; }
   @media (max-width: 700px) {
     body { padding: 20px; }
     main { gap: 28px; }
     h1, p { font-size: 24px; line-height: 27px; }
+    .cta { font-size: 18px; line-height: 22px; padding: 14px 24px; }
   }
 </style>
 </head>
@@ -87,7 +103,7 @@
     <figure>
       <img src="assets/photo.png" alt="Rachel reading How to Do Nothing, seated by a plant" width="620" height="465">
     </figure>
-    <p>Coming Soon</p>
+    <a class="cta" href="https://cal.com/circleofquietcounselling/15min">Let’s find a time to talk</a>
   </main>
 </body>
 </html>
